@@ -1,0 +1,51 @@
+{% extends "portfolio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center my-3">
+  <div class="col-5">
+
+    <img class="img-fluid myimage" src="{% static 'portfolio/prof.jpg' %}" alt="no img">
+  </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h1 id="hometex" class="font-weight-bold">Python Full Stack Developer</h1>
+  </div>
+</div>
+
+<h1 class="blog-title mt-5">Portfolio</h1>
+<hr>
+<div class="row">
+  {% for project in projects %}
+    <div class="col-lg-4 col-md-6">
+
+      {% if project.url  %}
+          <a href="{{project.url}}" target="_blank">
+            <img src="{{project.image.url}}" alt="project_img" class="img-fluid mb-2 proimg " >
+          </a>
+
+
+  {% else %}
+        <img src="{{project.image.url}}" alt="project_img" class="img-fluid mb-2 proimg ">
+
+
+  {% endif %}
+      <h3 class="prot">{{project}}</h3>
+      <p class="prod">{{project.description}}</p>
+
+
+
+
+</div>
+
+
+
+
+{% endfor %}
+</div>
+
+{% endblock %}

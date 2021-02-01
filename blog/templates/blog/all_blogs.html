@@ -1,0 +1,16 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+
+
+<h1 class="blog-header">Blog</h1>
+<h2 class="blog-dec blog-header">Sahasil has Written {{blogs.count}} blog{{blogs.count|pluralize}}</h2>
+{% for blog in blogs  %}
+<div class="jumbotron">
+  <a class="blog-title" href="{% url 'blog:detail' blog.id %}"><h2>{{blog.title}}</h2></a>
+  <h5 class="blog-date">{{blog.date|date:'M d Y'|upper}}</h5>
+  <p class="blog-dec">{{blog.description|truncatechars:100}}</p>
+
+</div>
+
+{% endfor %}
+{% endblock content %}
